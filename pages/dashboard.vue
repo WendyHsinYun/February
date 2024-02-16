@@ -239,7 +239,7 @@ const close = () => {
 };
 
 const exportFile = () => {
-  const data = formatSheet(tableData.value);
+  const data = formatSheet(originalData.value);
   const ws = utils.json_to_sheet(data);
   const wb = utils.book_new();
 
