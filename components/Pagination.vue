@@ -1,9 +1,9 @@
 <template lang="pug">
-v-row(no-gutters)
-  v-spacer
+v-row(no-gutters).justify-center
   v-col.d-flex.align-center(cols="auto")
-    span(v-if="nodesTotal > 0").text-body-2.text-secondaryText.font-weight-bold ({{ pageStartIndex + 1 }}-{{ pageEndIndex }} / {{ nodesTotal }})
-    span(v-else).text-body-2.text-secondaryText.font-weight-bold (0 / {{ nodesTotal }}) 
+    span(v-if="customerTotal > 0").text-body-2.text-secondaryText.font-weight-bold ({{ pageStartIndex + 1 }}-{{ pageEndIndex }} / {{ customerTotal }})
+    span(v-else).text-body-2.text-secondaryText.font-weight-bold (0 / {{ customerTotal }}) 
+
   v-col.d-flex.align-center.ms-4.me-6(cols="auto")
     v-pagination(
       :model-value="modelValue"
@@ -26,9 +26,9 @@ const props = defineProps({
   },
   pageSize: {
     type: Number,
-    default: 50,
+    default: 5,
   },
-  nodesTotal: {
+  customerTotal: {
     type: Number,
     default: 0,
   },
@@ -43,13 +43,13 @@ const pageStartIndex = computed(() => {
 });
 
 const pageEndIndex = computed(() => {
-  return props.modelValue * props.pageSize > props.nodesTotal
-    ? props.nodesTotal
+  return props.modelValue * props.pageSize > props.customerTotal
+    ? props.customerTotal
     : props.modelValue * props.pageSize;
 });
 
 const pageLength = computed(() => {
-  return Math.ceil(props.nodesTotal / props.pageSize);
+  return Math.ceil(props.customerTotal / props.pageSize);
 });
 
 const onUpdated = (value) => {
