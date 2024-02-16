@@ -51,7 +51,6 @@ PopupLevel(
 import _ from 'lodash';
 import dayjs from 'dayjs';
 import { utils, writeFileXLSX } from 'xlsx';
-import { onMounted, watch } from 'vue';
 
 const tableData = ref(customersData);
 const originalData = ref(customersData);
@@ -239,7 +238,9 @@ const close = () => {
 };
 
 const exportFile = () => {
-  const data = formatSheet(originalData.value);
+  const copies = _.cloneDeep(originalData.value);
+  const data = formatSheet(copies);
+
   const ws = utils.json_to_sheet(data);
   const wb = utils.book_new();
 
