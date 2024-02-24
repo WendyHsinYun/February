@@ -12,7 +12,7 @@ v-dialog(width="auto" persistent)
       v-row.pb-2
         v-col.d-flex.align-center.pb-0(cols="12")
           p.text-secondaryText Change 
-            span.font-weight-bold.me-1 {{ customers.join(', ') }} 
+            span.font-weight-bold.me-1 {{ selectedCustomers.join(', ') }} 
             span to 
             span.font-weight-bold {{ level }} 
             span.ms-1 level. 
@@ -27,26 +27,26 @@ v-dialog(width="auto" persistent)
 </template>
 
 <script setup>
-import _ from 'lodash'
+import _ from 'lodash';
 
 const props = defineProps({
-  customers : {
+  selectedCustomers: {
     type: Array,
     default: () => [],
   },
   level: {
     type: String,
     default: null,
-  }
-})
+  },
+});
 
 const emit = defineEmits(['close', 'submit']);
 
 const submit = () => {
-  emit('submit')
-}
+  emit('submit');
+};
 
 const close = () => {
-  emit('close')
-}
+  emit('close');
+};
 </script>

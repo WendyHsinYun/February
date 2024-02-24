@@ -1,10 +1,10 @@
 
-import { updateAppConfig } from '#app/config'
-import { defuFn } from 'defu'
+import { updateAppConfig } from '#app'
+import { defuFn } from '/Users/wendy.chang/node_modules/defu/dist/defu.mjs'
 
 const inlineConfig = {
   "nuxt": {
-    "buildId": "dev"
+    "buildId": "test"
   }
 }
 
@@ -17,4 +17,4 @@ if (import.meta.hot) {
 
 
 
-export default /*@__PURE__*/ defuFn(inlineConfig)
+export default /* #__PURE__ */ defuFn(inlineConfig)
